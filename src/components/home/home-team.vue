@@ -1,48 +1,23 @@
 <template>
   <div class="team">
     <div class="container">
-      <div class="team__wrapper" data-aos="zoom-in-up">
+      <div class="team__wrapper">
         <h2 class="team__title">Присоединяйся к нашей команде</h2>
         <div class="team__block">
           <div class="team__block-inner" ref="itemRef">
             <div
                 class="team__item"
-                @click="activeItem = 1"
+                v-for="(item, idx) in items"
+                :key="idx"
+                :class="{ active: activeItem === idx }"
+                @mouseenter="handleEnter(idx)"
+                @mouseleave="handleLeave"
+                @click="handleClick(idx)"
             >
-              <img src="@images/teamImage1.png" alt="image">
-              <div class="team__item-inner" :class="[{ active: activeItem === 1 }]">
-                <h6>Современный офис</h6>
-                <p>Удобная локация и комфортное пространство</p>
-              </div>
-            </div>
-            <div
-                class="team__item"
-                @click="activeItem = 2"
-            >
-              <img src="@images/teamImage2.png" alt="image">
-              <div class="team__item-inner" :class="[{ active: activeItem === 2 }]">
-                <h6>Интересные проекты</h6>
-                <p>Работа над технологич-ными решениями</p>
-              </div>
-            </div>
-            <div
-                class="team__item"
-                @click="activeItem = 3"
-            >
-              <img src="@images/teamImage3.png" alt="image">
-              <div class="team__item-inner" :class="[{ active: activeItem === 3 }]">
-                <h6>Компенсация обедов</h6>
-                <p>Внимание к ежедневному комфорту</p>
-              </div>
-            </div>
-            <div
-                class="team__item"
-                @click="activeItem = 4"
-            >
-              <img src="@images/teamImage4.png" alt="image">
-              <div class="team__item-inner" :class="[{ active: activeItem === 4 }]">
-                <h6>Молодая команда</h6>
-                <p>Коллектив, в котором приятно работать</p>
+              <img :src="item.image" alt="image">
+              <div class="team__item-inner" :class="[{ active: activeItem === idx }]">
+                <h6>{{ item.title }}</h6>
+                <p>{{ item.text }}</p>
               </div>
             </div>
           </div>
@@ -66,17 +41,47 @@
 <script setup>
 import {ref} from "vue";
 import {onClickOutside} from "@vueuse/core";
-import { onMounted } from "vue";
-import AOS from "aos";
 
 const activeItem = ref(0)
+const isTouchDevice = navigator.maxTouchPoints > 0
+
+const handleEnter = (idx) => {
+  if (!isTouchDevice) activeItem.value = idx
+}
+
+const handleLeave = () => {
+  if (!isTouchDevice) activeItem.value = null
+}
+
+const handleClick = (idx) => {
+  if (isTouchDevice) activeItem.value = activeItem.value === idx ? null : idx
+}
 
 const itemRef = ref(null);
 onClickOutside(itemRef, () => activeItem.value = 0);
 
-onMounted(() => {
-  AOS.init();
-})
+const items = [
+  {
+    title: 'Современный офис',
+    text: 'Удобная локация и комфортное пространство',
+    image: '/team/teamImage1.png'
+  },
+  {
+    title: 'Интересные проекты',
+    text: 'Работа над технологич-ными решениями',
+    image: '/team/teamImage2.png'
+  },
+  {
+    title: 'Компенсация обедов',
+    text: 'Внимание к ежедневному комфорту',
+    image: '/team/teamImage3.png'
+  },
+  {
+    title: 'Молодая команда',
+    text: 'Коллектив, в котором приятно работать',
+    image: '/team/teamImage4.png'
+  }
+]
 </script>
 
 <style lang="scss" scoped>
@@ -85,6 +90,7 @@ onMounted(() => {
   background-image: url(@images/teamBg.png);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 
   &__wrapper {
     display: flex;
@@ -149,6 +155,7 @@ onMounted(() => {
       inset: 0;
       backdrop-filter: blur(12.5px);
       padding: 30px 15px 55px 15px;
+      background-color: rgba(4, 4, 4, 0.30);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -176,7 +183,7 @@ onMounted(() => {
   }
 
   &__button {
-    margin-top: 20px;
+    margin-top: 35px;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.56);
     background: linear-gradient(0deg, rgba(70, 98, 130, 0.00) 0%, rgba(70, 98, 130, 0.00) 100%), linear-gradient(180deg, rgba(108, 108, 108, 0.15) 0%, rgba(255, 255, 255, 0.01) 100%);

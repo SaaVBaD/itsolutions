@@ -7,29 +7,33 @@
           <div class="contact__left">
             <p class="contact__left-text">Мы всегда открыты к предложениям о новых проектах и к кандидатам, которые хотят присоединиться к нашей команде.</p>
             <div>
-              <p class="contact__left-address">Спартаковский переулок 2 с1</p>
+              <p class="contact__left-address">г. Москва, пер. Переведеновский, д. 13, стр. 18, помещ. 21Н/3</p>
               <p class="contact__left-time">Пн-Пт 10:00-19:00</p>
+              <a class="contact__left-link" href="mailto:contact@digitalbusinesscrew.com">contact@digitalbusinesscrew.com</a>
+              <a class="contact__left-link" href="tel:+79850000000">+7 (985) 000 0000</a>
             </div>
-            <a class="contact__left-link" href="mailto:contact@digitalbusinesscrew.com">contact@digitalbusinesscrew.com</a>
-            <a class="contact__left-link" href="tel:+79850000000">+7 (985) 000 0000</a>
           </div>
           <form class="contact__form" @submit.prevent="contact">
             <ui-input
                 v-model="name"
+                :rules="[required]"
                 :placeholder="'Имя'"
             />
             <div class="contact__form-box">
               <ui-input
                   v-model="phone"
+                  :rules="[required]"
                   :placeholder="'Номер'"
               />
               <ui-input
-                  v-model="company"
-                  :placeholder="'Компания'"
+                  v-model="email"
+                  :rules="[isEmail]"
+                  :placeholder="'Почта'"
               />
             </div>
             <ui-textarea
                 v-model="message"
+                :rules="[required]"
                 :placeholder="'Комментарий'"
             />
             <div class="contact__form-bottom">
@@ -57,10 +61,11 @@ import {computed, ref} from "vue";
 import UiInput from "@/components/ui/ui-input.vue";
 import UiTextarea from "@/components/ui/ui-textarea.vue";
 import UiCheckbox from "@/components/ui/ui-checkbox.vue";
+import {isEmail, required} from "@/core/rules/textFieldRules.js";
 
 const name = ref('')
 const phone = ref('')
-const company = ref('')
+const email = ref('')
 const message = ref('')
 const isAgree = ref(false)
 
@@ -68,7 +73,7 @@ const isFormValid = computed(() => {
   return (
       name.value &&
       phone.value &&
-      company.value &&
+      email.value &&
       message.value &&
       isAgree.value === true
   )
@@ -83,7 +88,7 @@ const contact = async () => {
     body: JSON.stringify({
       name: name.value,
       phone: phone.value,
-      company: company.value,
+      email: email.value,
       message: message.value
     })
   })
@@ -95,7 +100,7 @@ const contact = async () => {
 
   name.value = ''
   phone.value = ''
-  company.value = ''
+  email.value = ''
   message.value = ''
 }
 </script>
@@ -142,13 +147,14 @@ const contact = async () => {
     & div {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 20px;
+      padding-bottom: 60px;
     }
 
     &-address {
       color: #FFF;
       font-family: Onest, sans-serif;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 600;
     }
 
@@ -163,7 +169,7 @@ const contact = async () => {
       transition: 0.2s;
       color: #FFF;
       font-family: Onest, sans-serif;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 600;
 
       @include hover {
@@ -236,6 +242,7 @@ const contact = async () => {
 
     &__left {
       align-items: center;
+      gap: 20px;
 
       &-text {
         text-align: center;
@@ -243,6 +250,7 @@ const contact = async () => {
 
       & div {
         align-items: center;
+        padding-bottom: 0;
       }
     }
   }

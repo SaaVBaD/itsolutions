@@ -1,7 +1,7 @@
 <template>
   <div class="about" id="about">
     <div class="container">
-      <div class="about__wrapper" data-aos="fade-up">
+      <div class="about__wrapper">
         <div class="about__top">
           <h2 class="about__top-title">О компании</h2>
           <p class="about__top-text">Мы помогаем компаниям выстраивать цифровые системы, которые повышают эффективность, упрощают процессы и поддерживают рост.</p>
@@ -35,20 +35,15 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import AOS from "aos";
 
-onMounted(() => {
-  AOS.init();
-})
 </script>
 
 <style lang="scss" scoped>
 .about {
   position: relative;
   z-index: 1;
-  margin-top: -150px;
-  padding-block: 200px;
+  //margin-top: -150px;
+  padding-block: 150px;
   background-image: url(@images/aboutBg.png);
   background-size: cover;
   background-position: center;
@@ -99,6 +94,11 @@ onMounted(() => {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: 0.2s;
+
+    @include hover {
+      transform: scale(1.03);
+    }
 
     & div {
       display: flex;

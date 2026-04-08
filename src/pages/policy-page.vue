@@ -103,6 +103,7 @@
   background-image: url(@images/docsBg.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 
   &__wrapper {
     position: relative;
@@ -128,8 +129,8 @@
       color: #FFF;
       text-align: justify;
       font-family: Onest, sans-serif;
-      font-size: 18px;
-      font-weight: 400;
+      font-size: 20px;
+      font-weight: 600;
     }
 
     & p, li {
@@ -158,7 +159,7 @@ ul {
 @media (max-width: 750px) {
   .docs {
     &__title {
-      font-size: 42px;
+      font-size: 32px;
     }
 
     &__block {

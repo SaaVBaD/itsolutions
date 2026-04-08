@@ -60,9 +60,15 @@
               </svg>
               <div class="dropdown" :class="[{ active: isDropdownActive }]">
                 <div class="dropdown__wrapper">
-                  <p class="dropdown__item" @click="scrollTo('system', 'home')">Системная архитектура бизнеса</p>
-                  <p class="dropdown__item" @click="scrollTo('digital', 'home')">Цифровая разработка</p>
-                  <p class="dropdown__item" @click="scrollTo('audit', 'home')">Аудит и консалтинг</p>
+                  <div class="dropdown__item">
+                    <p @click="scrollTo('system', 'home')">Системная архитектура бизнеса</p>
+                  </div>
+                  <div class="dropdown__item">
+                    <p @click="scrollTo('digital', 'home')">Цифровая разработка</p>
+                  </div>
+                  <div class="dropdown__item">
+                    <p @click="scrollTo('audit', 'home')">Аудит и консалтинг</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -237,7 +243,6 @@ onClickOutside(dropdownRef, () => isDropdownActive.value = false);
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  width: 215px;
   overflow: hidden;
   border-radius: 20px;
   display: grid;
@@ -251,7 +256,7 @@ onClickOutside(dropdownRef, () => isDropdownActive.value = false);
 
   &__wrapper {
     display: flex;
-    flex-direction: column;
+    align-items: center;
   }
 
   &.active {
@@ -263,23 +268,36 @@ onClickOutside(dropdownRef, () => isDropdownActive.value = false);
   }
 
   &__item {
-    padding: 6px 14px;
+    padding: 15px 20px;
     cursor: pointer;
     transition: 0.2s;
-    color: #FFF;
-    font-size: 16px;
-    font-weight: 400;
 
     &:first-child {
-      padding-top: 14px;
+      padding-inline: 25px 0;
     }
 
     &:last-child {
-      padding-bottom: 14px;
+      padding-inline: 0 25px;
+
+      & p {
+        border: none;
+      }
+    }
+
+    & p {
+      transition: 0.2s;
+      border-right: 1px solid #fff;
+      padding-right: 20px;
+      color: #FFF;
+      font-size: 16px;
+      font-weight: 400;
+      white-space: nowrap;
     }
 
     @include hover {
-      color: #2388FF;
+      & p {
+        color: #2388FF;
+      }
     }
   }
 }

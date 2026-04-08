@@ -6,6 +6,7 @@
         :value="modelValue"
         @input="onInput"
         class="block__input"
+        :class="[{ error: !validate }]"
     >
     <p v-if="!validate" class="block__error">{{ errorMessage }}</p>
   </div>
@@ -70,12 +71,16 @@ const onInput = (e) => {
     &::placeholder {
       color: rgba(255, 255, 255, 0.40);
     }
+
+    &.error {
+      border-color: $error;
+    }
   }
 
   &__error {
     color: $error;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 400;
     animation: fadeInUp 0.3s ease;
 
     @keyframes fadeInUp {

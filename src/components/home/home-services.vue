@@ -1,7 +1,7 @@
 <template>
   <div class="services">
     <div class="container">
-      <div class="services__wrapper" data-aos="zoom-in-up">
+      <div class="services__wrapper">
         <h2 class="services__title">Наши услуги</h2>
         <div class="services__block">
           <div class="services__item">
@@ -26,12 +26,7 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import AOS from "aos";
 
-onMounted(() => {
-  AOS.init();
-})
 </script>
 
 <style lang="scss" scoped>
