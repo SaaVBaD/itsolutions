@@ -1,7 +1,7 @@
 <template>
   <div class="about" id="about">
     <div class="container">
-      <div class="about__wrapper">
+      <div class="about__wrapper" data-aos="fade-up">
         <div class="about__top">
           <h2 class="about__top-title">О компании</h2>
           <p class="about__top-text">Мы помогаем компаниям выстраивать цифровые системы, которые повышают эффективность, упрощают процессы и поддерживают рост.</p>
@@ -35,7 +35,12 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
+import AOS from "aos";
 
+onMounted(() => {
+  AOS.init();
+})
 </script>
 
 <style lang="scss" scoped>

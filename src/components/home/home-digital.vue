@@ -105,6 +105,11 @@ const items = ref([
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: 0.2s;
+
+    @include hover {
+      transform: scale(1.03);
+    }
 
     &-inner {
       cursor: pointer;
@@ -174,6 +179,7 @@ const items = ref([
 
 :deep(.marquee) {
   align-items: flex-start !important;
+  padding-block: 10px;
 }
 
 @media (max-width: 1100px) {

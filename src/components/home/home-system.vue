@@ -1,7 +1,7 @@
 <template>
   <div class="system" id="system">
     <div class="container">
-      <div class="system__wrapper">
+      <div class="system__wrapper" data-aos="zoom-out-up">
         <div class="line" />
         <div class="system__title">
           <h2>Системная архитектура бизнеса</h2>
@@ -70,6 +70,8 @@
 <script setup>
 import {ref} from "vue";
 import {onClickOutside} from "@vueuse/core";
+import { onMounted } from "vue";
+import AOS from "aos";
 
 const isDropdownOpen = ref(false);
 const activeTexts = ref(null)
@@ -124,6 +126,10 @@ const texts = ref([
     ]
   }
 ])
+
+onMounted(() => {
+  AOS.init();
+})
 </script>
 
 <style lang="scss" scoped>
@@ -198,6 +204,7 @@ const texts = ref([
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.3);
+      transform: scale(1.03);
     }
 
     &.active {

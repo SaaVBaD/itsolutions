@@ -1,7 +1,7 @@
 <template>
   <div class="team">
     <div class="container">
-      <div class="team__wrapper">
+      <div class="team__wrapper" data-aos="zoom-in-up">
         <h2 class="team__title">Присоединяйся к нашей команде</h2>
         <div class="team__block">
           <div class="team__block-inner" ref="itemRef">
@@ -66,11 +66,17 @@
 <script setup>
 import {ref} from "vue";
 import {onClickOutside} from "@vueuse/core";
+import { onMounted } from "vue";
+import AOS from "aos";
 
 const activeItem = ref(0)
 
 const itemRef = ref(null);
 onClickOutside(itemRef, () => activeItem.value = 0);
+
+onMounted(() => {
+  AOS.init();
+})
 </script>
 
 <style lang="scss" scoped>
@@ -128,6 +134,11 @@ onClickOutside(itemRef, () => activeItem.value = 0);
     background: rgba(4, 4, 4, 0.20);
     box-shadow: -13px -13px 17.3px 0 rgba(0, 0, 0, 0.25) inset, 13px 13px 17.3px 0 rgba(0, 0, 0, 0.25) inset;
     position: relative;
+    transition: 0.2s;
+
+    @include hover {
+      transform: scale(1.03);
+    }
 
     & img {
       display: block;
@@ -183,6 +194,7 @@ onClickOutside(itemRef, () => activeItem.value = 0);
 
     @include hover {
       background: rgba(35, 136, 255, 0.30);
+      transform: scale(1.03);
     }
   }
 }

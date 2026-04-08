@@ -1,7 +1,7 @@
 <template>
   <div class="audit" id="audit">
     <div class="container">
-      <div class="audit__wrapper">
+      <div class="audit__wrapper" data-aos="fade-up">
         <h2 class="audit__title">Аудит и консалтинг</h2>
         <div class="audit__block">
           <div
@@ -23,6 +23,8 @@
 
 <script setup>
 import {ref} from "vue";
+import { onMounted } from "vue";
+import AOS from "aos";
 
 const activeIndex = ref(0)
 
@@ -52,6 +54,10 @@ const items = ref([
     text: "Формирование стратегии развития цифровой среды компании и поэтапного плана изменений с учетом текущих задач, приоритетов бизнеса и перспектив дальнейшего роста."
   }
 ])
+
+onMounted(() => {
+  AOS.init();
+})
 </script>
 
 <style lang="scss" scoped>
@@ -97,6 +103,11 @@ const items = ref([
     justify-content: center;
     position: relative;
     transition: 0.2s;
+    cursor: pointer;
+
+    @include hover {
+      transform: scale(1.03);
+    }
 
     & * {
       transition: 0.2s;

@@ -52,6 +52,7 @@ const scrollTo = (id, routeName) => {
 
     & h1 {
       text-shadow: 0 0 20px rgba(255, 255, 255, 0.50);
+      animation: pulse 3s infinite;
       color: #FFF;
       text-align: center;
       font-family: "Gros Ventre", sans-serif;
@@ -89,8 +90,21 @@ const scrollTo = (id, routeName) => {
 
       @include hover {
         background: rgba(35, 136, 255, 0.30);
+        transform: scale(1.03);
       }
     }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.50);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 1);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.50);
   }
 }
 

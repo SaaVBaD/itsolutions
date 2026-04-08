@@ -1,7 +1,7 @@
 <template>
   <div class="principles">
     <div class="container">
-      <div class="principles__wrapper">
+      <div class="principles__wrapper" data-aos="fade-up">
         <div class="principles__left">
           <h2>Наши принципы</h2>
           <img src="@images/principlesImage.png" alt="image">
@@ -30,7 +30,12 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
+import AOS from "aos";
 
+onMounted(() => {
+  AOS.init();
+})
 </script>
 
 <style lang="scss" scoped>

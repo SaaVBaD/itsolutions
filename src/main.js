@@ -9,6 +9,7 @@ import 'element-plus/theme-chalk/dark/css-vars.css'
 import 'aos/dist/aos.css'
 import router from './router'
 import Vue3Marquee from 'vue3-marquee'
+import 'aos/dist/aos.css'
 
 const app = createApp(App)
   .use(createPinia())
