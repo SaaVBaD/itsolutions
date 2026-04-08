@@ -42,7 +42,7 @@
 import {ref} from "vue";
 import {onClickOutside} from "@vueuse/core";
 
-const activeItem = ref(0)
+const activeItem = ref(null)
 const isTouchDevice = navigator.maxTouchPoints > 0
 
 const handleEnter = (idx) => {
