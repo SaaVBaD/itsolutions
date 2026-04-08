@@ -271,12 +271,17 @@ const contact = async () => {
     }
 
     &__left {
+      & div {
+        gap: 10px;
+      }
+
       &-text {
         font-size: 16px;
       }
 
       &-address {
-        font-size: 20px;
+        font-size: 16px;
+        text-align: center;
       }
 
       &-time {
@@ -284,7 +289,7 @@ const contact = async () => {
       }
 
       &-link {
-        font-size: 20px;
+        font-size: 16px;
       }
     }
 

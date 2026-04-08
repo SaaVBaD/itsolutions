@@ -10,6 +10,7 @@
         class="carousel"
         duration="35"
         :pauseOnHover="true"
+        :pause="activeIndex !== null"
         @mouseleave="activeIndex = null"
         ref="dropdownRef"
     >

@@ -269,6 +269,7 @@ const scrollTo = (id, routeName) => {
     &__left {
       &-block {
         & a, p {
+          text-align: left;
           font-size: 14px;
         }
       }

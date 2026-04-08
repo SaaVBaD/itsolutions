@@ -53,11 +53,11 @@
 
   &__left {
     flex-shrink: 0;
-    width: 40%;
+    width: 35%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 70px;
+    gap: 40px;
 
     & h2 {
       color: #FFF;
