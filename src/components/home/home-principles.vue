@@ -47,7 +47,7 @@
 
   &__wrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 80px;
   }
 
