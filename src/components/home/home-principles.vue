@@ -47,7 +47,7 @@
 
   &__wrapper {
     display: flex;
-    align-items: flex-end;
+    align-items: stretch;
     gap: 80px;
   }
 
@@ -109,6 +109,7 @@
     & div {
       display: flex;
       flex-direction: column;
+      gap: 10px;
       position: relative;
       z-index: 1;
       width: 100%;
