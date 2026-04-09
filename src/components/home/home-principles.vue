@@ -47,13 +47,13 @@
 
   &__wrapper {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     gap: 80px;
   }
 
   &__left {
     flex-shrink: 0;
-    width: 35%;
+    width: 42%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
